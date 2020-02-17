@@ -30,42 +30,42 @@ shopt -s globstar
 set -o vi
  
 # Definições do comprimento e tamanho do historico.
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=3000
+HISTFILESIZE=3000
  
 #===========================================
 # Váriavies com as Cores
 #===========================================
-NONE="\[\033[0m\]" # Eliminar as Cores, deixar padrão)
+NONE="\[\033[0m\]" # Eliminar as Cores (deixar padrão)
  
 ## Cores de Fonte
-K="\[\033[0;30m\]" # Black (Preto)
-R="\[\033[0;31m\]" # Red (Vermelho)
-G="\[\033[0;32m\]" # Green (Verde)
-Y="\[\033[0;33m\]" # Yellow (Amarelo)
-B="\[\033[0;34m\]" # Blue (Azul)
-M="\[\033[0;35m\]" # Magenta (Vermelho Claro)
-C="\[\033[0;36m\]" # Cyan (Ciano - Azul Claro)
-W="\[\033[0;37m\]" # White (Branco)
+K="\[\033[0;30m\]" # Black
+R="\[\033[0;31m\]" # Red
+G="\[\033[0;32m\]" # Green
+Y="\[\033[0;33m\]" # Yellow
+B="\[\033[0;34m\]" # Blue
+M="\[\033[0;35m\]" # Magenta
+C="\[\033[0;36m\]" # Cyan
+W="\[\033[0;37m\]" # White
 
-BBK="\[\033[0;90m\]" # Brilhante Black (Preto)
-BBR="\[\033[0;91m\]" # Brilhante Red (Vermelho)
-BBG="\[\033[0;92m\]" # Brilhante Green (Verde)
-BBY="\[\033[0;93m\]" # Brilhante Yellow (Amarelo)
-BBB="\[\033[0;94m\]" # Brilhante Blue (Azul)
-BBM="\[\033[0;95m\]" # Brilhante Magenta (Vermelho Claro)
-BBC="\[\033[0;96m\]" # Brilhante Cyan (Ciano - Azul Claro)
-BBW="\[\033[0;97m\]" # Brilhante White (Branco)
+BBK="\[\033[0;90m\]" # Brilhante Black
+BBR="\[\033[0;91m\]" # Brilhante Red
+BBG="\[\033[0;92m\]" # Brilhante Green
+BBY="\[\033[0;93m\]" # Brilhante Yellow
+BBB="\[\033[0;94m\]" # Brilhante Blue
+BBM="\[\033[0;95m\]" # Brilhante Magenta
+BBC="\[\033[0;96m\]" # Brilhante Cyan
+BBW="\[\033[0;97m\]" # Brilhante White
  
-## Efeito Negrito (bold) e cores
-BK="\[\033[1;30m\]" # Bold+Black (Negrito+Preto)
-BR="\[\033[1;31m\]" # Bold+Red (Negrito+Vermelho)
-BG="\[\033[1;32m\]" # Bold+Green (Negrito+Verde)
-BY="\[\033[1;33m\]" # Bold+Yellow (Negrito+Amarelo)
-BB="\[\033[1;34m\]" # Bold+Blue (Negrito+Azul)
-BM="\[\033[1;35m\]" # Bold+Magenta (Negrito+Vermelho Claro)
-BC="\[\033[1;36m\]" # Bold+Cyan (Negrito+Ciano - Azul Claro)
-BW="\[\033[1;37m\]" # Bold+White (Negrito+Branco)
+## Efeito Negrito e cores
+BK="\[\033[1;30m\]" # Bold+Black
+BR="\[\033[1;31m\]" # Bold+Red
+BG="\[\033[1;32m\]" # Bold+Green
+BY="\[\033[1;33m\]" # Bold+Yellow
+BB="\[\033[1;34m\]" # Bold+Blue
+BM="\[\033[1;35m\]" # Bold+Magenta
+BC="\[\033[1;36m\]" # Bold+Cyan
+BW="\[\033[1;37m\]" # Bold+White
 
 ## Cores de fundo (backgroud)
 BGK="\[\033[40m\]" # Black (Preto)
@@ -95,8 +95,9 @@ if [ $UID -eq "0" ]; then
 else
     ## Cores e efeitos do usuário comum
     PS1="$W┌─ $BBG\u$G@\h $BBC\w\n$W└─╼ $NONE"
-fi # Fim da condição if
- 
+fi
+
+# Outras opcoes de personalizacao
 #PS1="$BK┌─[$BG\u$BK]$BK:\w\n$BK└──$BG>>$BK \$ $W"
 ## Exemplos de PS1
 #PS1="$BK┌─[$BG\u$BK]$BK:\w\n$BK└──$BG>>$BK \$ $W"
@@ -110,7 +111,7 @@ fi # Fim da condição if
 # DIVERSOS
 #==========================
  
-color_prompt=yes
+force_color_prompt=yes
 ## Habilitando suporte a cores para o ls e outros aliases
 ## Vê se o arquivo existe e eh possivel executar
 if [ -x /usr/bin/dircolors ]; then
@@ -141,10 +142,6 @@ PATH=$PATH:.
 #============================================================#
 # diretorios
 alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
 
 alias vi='vim'
 
@@ -168,5 +165,5 @@ source $HOME/.asdf/completions/asdf.bash
 
 export TERM=xterm-256color
 
-[[ -r ~/.bash_aliases ]] && . ~/.bash_aliases
-[[ -r ~/.bashrc_local ]] && . ~/.bashrc_local
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+[[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
